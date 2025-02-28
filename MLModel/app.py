@@ -34,13 +34,13 @@ def get_data():
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
-        # 🔹 **Check if image file is provided**
+        # 🔹 **Check if image file  is provided**
         if 'image' not in request.files:
             return jsonify({"error": "No image file provided"}), 400
 
         image_file = request.files['image']
         image_path = "temp_image.jpg"
-        # image_file.save(image_path)  # Save image temporarily
+        image_file.save(image_path)  # Save image temporarily
 
         # 🔹 **Preprocess Image**
         image = preprocess_image(image_path)
